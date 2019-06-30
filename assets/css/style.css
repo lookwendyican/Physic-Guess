@@ -2,8 +2,13 @@ body {
     background-color: #25274D;
 }
 
+h1 {
+    color: #AAABB8;
+}
+
 p {
     color: #DA7B93;
+    font-size: 30px;
     font-family: 'Barriecito', cursive;
 
 }
@@ -14,7 +19,7 @@ p {
 #directions-text {
     margin: auto 0;
     margin-left: 20px;
-    font-size: 30px;
+    font-size: 2em;
     font-family: 'Barriecito', cursive;
 }
 
