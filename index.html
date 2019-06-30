@@ -2,136 +2,143 @@
 <html lang="en-us">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Word Guess Game</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet">
-  <link href="./assets/css/style.css" type="text/css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Word Guess Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet">
+    <link href="./assets/css/style.css" type="text/css" rel="stylesheet">
 
 </head>
 
 <body>
-<!-- Create divisions to hold display space -->
-  <div class="container wrapper" height=300px>
-    <div class="row">
-            <img src="./assets/images/psychiceye.jpeg" alt="Psychic Eye."
-            width="300" class="flamenco"> 
-        <h1 id="directions-text">Welcome to Psychic Eye Web!</h1>
-    </div>
-
-    <div class="row">
-        <p id="directions-text">Press any letter to start playing!</p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-
-                
-            <p class="answer justify-content-center align-items-center" id="userchoice-text">USER CHOICE</p>
+    <!-- Create divisions to hold display space -->
+    <div class="container wrapper" height=300px>
+        <div class="row">
+            <img src="./assets/images/psychiceye.jpeg" alt="Psychic Eye." width="300" class="flamenco">
+            <h1>Welcome to Psychic Letter Game!</h1>
         </div>
 
-        <div class="col-md-6">
-            <p class="justify-content-center align-items-center" id="computerchoice-text">COMPUTER CHOICE</p>
+        <div class="row">
+            <h2 class="d-flex justify-content-center">Press any letter to start playing!</h2>
         </div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <p id="wins-text">wins</p>
+                </div>
+
+                <div class="row">
+                    <p id="losses-text">LOSSES</p>
+                </div>
+
+                <div class="row">
+                    <p d="guessesLeft-text">You have GUESSES left!</p>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <p id="userchoice-text">USER CHOICE</p>
+                </div>
+
+                <div class="row">
+                    <p id="computerchoice-text">COMPUTER CHOICE</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <h2 class="text-center" id="guessedSoFar-text">You have already guessed VARIABLE HERE!</h2>
+        </div>
+
     </div>
-    
 
-    <div class="row">
-        <div class="col-md-4">
-            <p  class="justify-content-center align-items-center"  id="wins-text">wins</p>
-        </div>
-
-        <div class="col-md-4">
-            <p  class="justify-content-center align-items-center"  id="losses-text">LOSSES</p>
-        </div>
-        <div class="col-md-4">
-            <p  class="justify-content-center align-items-center" id="guessesLeft-text">You have  GUESSES left!</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <p  class="justify-content-center" id="guessedSoFar-text">You have already guessed VARIABLE HERE!</p>
-    </div>
-
-  </div>
-
-  <script type="text/javascript">
-    // Creates an array that lists out all of the letters.
-    var letters = ["a", "b", "c", "d", "e", "f", "g", "g", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-console.log(letters);
+    <script type="text/javascript">
+        // Creates an array that lists out all of the letters.
+        var letters = ["a", "b", "c", "d", "e", "f", "g", "g", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        console.log(letters);
 
 
-    // Creating variables to hold the number of wins, losses, and ties. They start at 0.
-    var winsCount = 0;
-    var lossesCount = 0;
-    var guessesLeft = 10;
-    var guessedSoFar = [];
+        // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+        var winsCount = 0;
+        var lossesCount = 0;
+        var guessesLeft = 10;
+        var guessedSoFar = [];
 
-    // Create variables that hold references to the places in the HTML where we want to display things.
-    var directionsText = document.getElementById("directions-text");
-    var userChoiceText = document.getElementById("userchoice-text");
-    var computerChoiceText = document.getElementById("computerchoice-text");
-    var winsText = document.getElementById("wins-text");
-    var lossesText = document.getElementById("losses-text");
-    var tiesText = document.getElementById("ties-text");
+        // Create variables that hold references to the places in the HTML where we want to display things.
+        var directionsText = document.getElementById("directions-text");
+        var userChoiceText = document.getElementById("userchoice-text");
+        var computerChoiceText = document.getElementById("computerchoice-text");
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
+        var tiesText = document.getElementById("ties-text");
 
 
 
-// set up the computer to pick a random indexed value from aray
-var randomIndex = Math.floor(Math.random() * letters.length);
-var computerChoice = letters[randomIndex];
+        // set up the computer to pick a random indexed value from aray
+        var randomIndex = Math.floor(Math.random() * letters.length);
+        var computerChoice = letters[randomIndex];
 
-console.log(computerChoice);
+        console.log(computerChoice);
 
 
-     
-// add a listener for the user to press a key
-document.onkeyup = function(event) {
-  var userChoice = event.key;
-  // make sure the user selects a value a-z
-  var regexp = /[a-z]/gi;
-    if (!regexp.test(userChoice)) {
-      alert("please enter a letter");
-    }
-    else {
-      console.log(userChoice);
-    }
-    // reset computer choice if the user loses
-    if (guessesLeft <= 0) {
-      lossesCount++;
-      document.getElementById("lossesCount").innerHTML = lossesCount++;
-      console.log("You lost!");
-      alert("You lost!");
-      guessesRemaining = 10;
-      guessedLetters = [];
-      document.getElementById("guessedSoFar").innerHTML = guessedLetters;
-      document.getElementById("guessesLeft").innerHTML = 10;
-      randomIndex = Math.floor(Math.random() * alphabet.length);
-      computerChoice = alphabet[randomIndex];
-      console.log(computerChoice);
-    }
-    // compares the randomly selected computer choice and user choice
-    if (computerChoice === userChoice) {
-      console.log("You won!");
-      alert("You won!");
-      document.getElementById("winsCount").innerHTML = winCount++;
-      guessedLetters = [];
-      document.getElementById("guessedSoFar").innerHTML = guessedLetters;
-      randomIndex = Math.floor(Math.random() * alphabet.length);
-      computerChoice = alphabet[randomIndex];
-      console.log(computerChoice);
-      guessesRemaining = 10;
-      document.getElementById("guessesLeft").innerHTML = 10;
-    } else {
-      console.log("Guess again!");
-      document.getElementById("guessesLeft").innerHTML = guessesRemaining--;
-      guessedLetters.push(userChoice);
-      document.getElementById("guessedSoFar").innerHTML = guessedLetters;
-    }
-}
-    
-  </script>
 
+        // add a listener for the user to press a key
+        document.onkeyup = function (event) {
+            var userChoice = event.key;
+            // make sure the user selects a value a-z
+            var regexp = /[a-z]/gi;
+            if (!regexp.test(userChoice)) {
+                alert("please enter a letter");
+            }
+            else {
+                console.log(userChoice);
+            }
+            // reset computer choice if the user loses
+            if (guessesLeft <= 0) {
+                lossesCount++;
+                document.getElementById("lossesCount").innerHTML = lossesCount++;
+                console.log("You lost!");
+                alert("You lost!");
+                guessesRemaining = 10;
+                guessedLetters = [];
+                document.getElementById("guessedSoFar").innerHTML = guessedLetters;
+                document.getElementById("guessesLeft").innerHTML = 10;
+                randomIndex = Math.floor(Math.random() * alphabet.length);
+                computerChoice = alphabet[randomIndex];
+                console.log(computerChoice);
+            }
+            // compares the randomly selected computer choice and user choice
+            if (computerChoice === userChoice) {
+                console.log("You won!");
+                alert("You won!");
+                document.getElementById("winsCount").innerHTML = winsCount++;
+                guessedLetters = [];
+                document.getElementById("guessedSoFar").innerHTML = guessedLetters;
+                randomIndex = Math.floor(Math.random() * alphabet.length);
+                computerChoice = alphabet[randomIndex];
+                console.log(computerChoice);
+                guessesLeft = 10;
+                document.getElementById("guessesLeft").innerHTML = 10;
+            } else {
+                console.log("Guess again!");
+                alert("Guess again!");
+                document.getElementById("guessesLeft").innerHTML = guessesLeft--;
+                guessedLetters.push(userChoice);
+                document.getElementById("guessedSoFar").innerHTML = guessedSoFar;
+            }
+        }
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

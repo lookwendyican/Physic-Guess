@@ -10,16 +10,23 @@ p {
     color: #DA7B93;
     font-size: 30px;
     font-family: 'Barriecito', cursive;
+    text-align: center;
 
 }
 
 .answer {
     color: #AAABB8;
 }
-#directions-text {
+h1{
     margin: auto 0;
     margin-left: 20px;
-    font-size: 2em;
+    font-size: 45px;
     font-family: 'Barriecito', cursive;
+}
+
+h2 {
+    font-size: 30px;
+    font-family: 'Barriecito', cursive;
+    color: #DA7B93;
 }
 
