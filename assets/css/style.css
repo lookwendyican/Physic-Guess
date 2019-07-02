@@ -1,22 +1,21 @@
 body {
     background-color: #25274D;
+    font-family: 'Barriecito', cursive;
 }
 
 h1 {
-    color: #AAABB8;
+    color: #DA7B93;
 }
 
-p {
+/* p {
     color: #DA7B93;
     font-size: 30px;
     font-family: 'Barriecito', cursive;
     text-align: center;
 
-}
+} */
 
-.answer {
-    color: #AAABB8;
-}
+
 h1{
     margin: auto 0;
     margin-left: 20px;
@@ -27,6 +26,26 @@ h1{
 h2 {
     font-size: 30px;
     font-family: 'Barriecito', cursive;
-    color: #DA7B93;
+    color: #AAABB8;
+}
+.footer{
+    background-color: #AAABB8; 
 }
 
+.footerp {
+    color: #DA7B93;
+    text-align: center;
+
+}
+#next-round {
+    color:  #25274D;
+}
+
+.cardColor {
+    background-color: #DA7B93;
+}
+.guessDisplayText {
+    font-size: 30px;
+    color: #25274D;
+    text-align: center;
+}

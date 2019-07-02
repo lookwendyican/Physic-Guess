@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Word Guess Game</title>
+    <title>Psychic Letter Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet">
@@ -12,7 +12,84 @@
 </head>
 
 <body>
-    <!-- Create divisions to hold display space -->
+    <div class="container text-light wrapper">
+
+        <!-- header Welcome -->
+        <div class="row">
+            <img src="./assets/images/psychiceye.jpeg" alt="Psychic Eye." width="300">
+            <h1>Welcome to Psychic Letter Game!</h1>
+        </div>
+
+        <!-- Score Tracker -->
+        <div class="row d-flex justify-content-around m-3">
+            <div class="rounds">
+                <h2 class="round-label">Round <span id="round-number">1</span></h2>
+                <h2 class="guess-label">Target Letter: <span id="target-number">?</span></h2>
+            </div>
+        </div>
+
+
+        <!-- Guessing Display -->
+        <div class="row d-flex justify-content-around">
+
+
+            <!-- Computer Display -->
+            <div class="card cardColor" style="width: 20rem;">
+                <div class="card-body">
+                    <h2 class="card-title guessDisplayText">Computer</h2>
+                    <h6 class="card-subtitle mb-2 guessDisplayText">Score: <span
+                            id="computer-score guessDisplayText">0</span></h6>
+                    <h2 class="card-text guessDisplayText">?</h2>
+                    <p class="winning-text" id="computer-wins"></p>
+                </div>
+            </div>
+
+
+            <!-- User Display -->
+
+            <div class="card cardColor " style="width: 20rem;">
+                <div class="card-body ">
+                    <h2 class="card-title guessDisplayText">Your Guess</h2>
+                    <h6 class="card-subtitle mb-2 guessDisplayText">Score: <span
+                            id="computer-score guessDisplayText">0</span></h6>
+                    <h2 class="card-text guessDisplayText">?</h2>
+                    <p class="winning-text" id="computer-wins"></p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+
+        <!-- Next Round Button -->
+        <div class="row text-dark d-flex justify-content-center m-5"><button class="btn btn-light btn-lg"
+                id="next-round" disabled>Next Round</button>
+        </div>
+
+
+
+
+
+    </div>
+
+    <!-- Footer and instrction section THIS IS STATIC-->
+    <div class="row  d-flex justify-content-around footer mt-5">
+        <div class="column">
+            <h3>Step 1</h3>
+            <p class="footerP">Input a letter between a to z</p>
+        </div>
+        <div class="column">
+            <h3>Step 2</h3>
+            <p class="footerP">Click "Make a Guess" to submit <br> your guess and see who won the round.</p>
+        </div>
+        <div class="column">
+            <h3>Step 3</h3>
+            <p class="footerP">Click "Next Round" to play again.</p>
+        </div>
+    </div>
+
+
+    <!-- Create divisions to hold display space
     <div class="container wrapper" height=300px>
         <div class="row">
             <img src="./assets/images/psychiceye.jpeg" alt="Psychic Eye." width="300" class="flamenco">
@@ -57,7 +134,7 @@
             <h2 class="text-center" id="guessedSoFar-text">You have already guessed VARIABLE HERE!</h2>
         </div>
 
-    </div>
+    </div> -->
 
     <script type="text/javascript">
         // Creates an array that lists out all of the letters.
