@@ -7,26 +7,38 @@ h1 {
     color: #DA7B93;
 }
 
-/* p {
-    color: #DA7B93;
-    font-size: 30px;
-    font-family: 'Barriecito', cursive;
-    text-align: center;
-
-} */
 
 
 h1{
     margin: auto 0;
     margin-left: 20px;
     font-size: 45px;
-    font-family: 'Barriecito', cursive;
+    /* font-family: 'Barriecito', cursive; */
 }
 
 h2 {
     font-size: 30px;
-    font-family: 'Barriecito', cursive;
     color: #AAABB8;
+}
+
+
+.roundTarget {
+    font-size: 45px;
+}
+.allGuessesDisplay {
+    font-size: 45px;
+}
+#user-guess {
+    cursor: pointer;
+    background-color: #DA7B93;
+    margin: 0 auto;
+}
+
+
+#winner-display {
+    font-size: 45px;
+    color: #DA7B93;
+
 }
 .footer{
     background-color: #AAABB8; 
@@ -39,6 +51,7 @@ h2 {
 }
 #next-round {
     color:  #25274D;
+    font-size: 30px;
 }
 
 .cardColor {

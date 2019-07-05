@@ -23,8 +23,8 @@
         <!-- Score Tracker -->
         <div class="row d-flex justify-content-around m-3">
             <div class="rounds">
-                <h2 class="round-label">Round <span id="round-number">1</span></h2>
-                <h2 class="guess-label">Target Letter: <span id="target-number">?</span></h2>
+                <h2 class="round-label">Round:  <span id="round-number" class="roundTarget">0</span></h2>
+                <h2 class="guess-label">Target Letter: <span id="target-letter" class="roundTarget">?</span></h2>
             </div>
         </div>
 
@@ -36,11 +36,10 @@
             <!-- Computer Display -->
             <div class="card cardColor" style="width: 20rem;">
                 <div class="card-body">
-                    <h2 class="card-title guessDisplayText">Computer</h2>
+                    <h2 class="card-title guessDisplayText">Computer Guess:
+                     <span id="computer-guess" class="allGuessesDisplay">?</span> </h2>
                     <h6 class="card-subtitle mb-2 guessDisplayText">Score: <span
-                            id="computer-score guessDisplayText">0</span></h6>
-                    <h2 class="card-text guessDisplayText">?</h2>
-                    <p class="winning-text" id="computer-wins"></p>
+                            id="computer-score" class="allGuessesDisplay">0</span></h6>
                 </div>
             </div>
 
@@ -49,17 +48,16 @@
 
             <div class="card cardColor " style="width: 20rem;">
                 <div class="card-body ">
-                    <h2 class="card-title guessDisplayText">Your Guess</h2>
+                    <h2 class="card-title guessDisplayText">Your Guess:</h2><input type="text" id="user-guess" class="justify-content-center"></input>
                     <h6 class="card-subtitle mb-2 guessDisplayText">Score: <span
-                            id="computer-score guessDisplayText">0</span></h6>
-                    <h2 class="card-text guessDisplayText">?</h2>
-                    <p class="winning-text" id="computer-wins"></p>
+                            id="user-score" class="allGuessesDisplay">0</span></h6>  
                 </div>
             </div>
         </div>
         <br>
 
-
+         <!-- Display who won -->
+         <div class="row d-flex justify-content-around m-3"><span id="winner-display">Testing!</span></div>
 
         <!-- Next Round Button -->
         <div class="row text-dark d-flex justify-content-center m-5"><button class="btn btn-light btn-lg"
@@ -74,145 +72,23 @@
 
     <!-- Footer and instrction section THIS IS STATIC-->
     <div class="row  d-flex justify-content-around footer mt-5">
-        <div class="column">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <h3>Step 1</h3>
             <p class="footerP">Input a letter between a to z</p>
         </div>
-        <div class="column">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <h3>Step 2</h3>
             <p class="footerP">Click "Make a Guess" to submit <br> your guess and see who won the round.</p>
         </div>
-        <div class="column">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <h3>Step 3</h3>
             <p class="footerP">Click "Next Round" to play again.</p>
         </div>
     </div>
 
+ 
 
-    <!-- Create divisions to hold display space
-    <div class="container wrapper" height=300px>
-        <div class="row">
-            <img src="./assets/images/psychiceye.jpeg" alt="Psychic Eye." width="300" class="flamenco">
-            <h1>Welcome to Psychic Letter Game!</h1>
-        </div>
-
-        <div class="row">
-            <h2 class="d-flex justify-content-center">Press any letter to start playing!</h2>
-        </div>
-
-        <div class="row">
-
-            <div class="col-lg-6">
-                <div class="row">
-                    <p id="wins-text">wins</p>
-                </div>
-
-                <div class="row">
-                    <p id="losses-text">LOSSES</p>
-                </div>
-
-                <div class="row">
-                    <p d="guessesLeft-text">You have GUESSES left!</p>
-                </div>
-            </div>
-
-
-
-            <div class="col-lg-6">
-                <div class="row">
-                    <p id="userchoice-text">USER CHOICE</p>
-                </div>
-
-                <div class="row">
-                    <p id="computerchoice-text">COMPUTER CHOICE</p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <h2 class="text-center" id="guessedSoFar-text">You have already guessed VARIABLE HERE!</h2>
-        </div>
-
-    </div> -->
-
-    <script type="text/javascript">
-        // Creates an array that lists out all of the letters.
-        var letters = ["a", "b", "c", "d", "e", "f", "g", "g", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        console.log(letters);
-
-
-        // Creating variables to hold the number of wins, losses, and ties. They start at 0.
-        var winsCount = 0;
-        var lossesCount = 0;
-        var guessesLeft = 10;
-        var guessedSoFar = [];
-
-        // Create variables that hold references to the places in the HTML where we want to display things.
-        var directionsText = document.getElementById("directions-text");
-        var userChoiceText = document.getElementById("userchoice-text");
-        var computerChoiceText = document.getElementById("computerchoice-text");
-        var winsText = document.getElementById("wins-text");
-        var lossesText = document.getElementById("losses-text");
-        var tiesText = document.getElementById("ties-text");
-
-
-
-        // set up the computer to pick a random indexed value from aray
-        var randomIndex = Math.floor(Math.random() * letters.length);
-        var computerChoice = letters[randomIndex];
-
-        console.log(computerChoice);
-
-
-
-        // add a listener for the user to press a key
-        document.onkeyup = function (event) {
-            var userChoice = event.key;
-            // make sure the user selects a value a-z
-            var regexp = /[a-z]/gi;
-            if (!regexp.test(userChoice)) {
-                alert("please enter a letter");
-            }
-            else {
-                console.log(userChoice);
-            }
-            // reset computer choice if the user loses
-            if (guessesLeft <= 0) {
-                lossesCount++;
-                document.getElementById("lossesCount").innerHTML = lossesCount++;
-                console.log("You lost!");
-                alert("You lost!");
-                guessesRemaining = 10;
-                guessedLetters = [];
-                document.getElementById("guessedSoFar").innerHTML = guessedLetters;
-                document.getElementById("guessesLeft").innerHTML = 10;
-                randomIndex = Math.floor(Math.random() * alphabet.length);
-                computerChoice = alphabet[randomIndex];
-                console.log(computerChoice);
-            }
-            // compares the randomly selected computer choice and user choice
-            if (computerChoice === userChoice) {
-                console.log("You won!");
-                alert("You won!");
-                document.getElementById("winsCount").innerHTML = winsCount++;
-                guessedLetters = [];
-                document.getElementById("guessedSoFar").innerHTML = guessedLetters;
-                randomIndex = Math.floor(Math.random() * alphabet.length);
-                computerChoice = alphabet[randomIndex];
-                console.log(computerChoice);
-                guessesLeft = 10;
-                document.getElementById("guessesLeft").innerHTML = 10;
-            } else {
-                console.log("Guess again!");
-                alert("Guess again!");
-                document.getElementById("guessesLeft").innerHTML = guessesLeft--;
-                guessedLetters.push(userChoice);
-                document.getElementById("guessedSoFar").innerHTML = guessedSoFar;
-            }
-        }
-
-    </script>
+    <script type="text/javascript" src=assets/javascript/game.js> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
